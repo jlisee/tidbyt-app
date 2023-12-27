@@ -1,11 +1,20 @@
 load("render.star", "render")
 
 def main():
+    wide_row = render.Row(
+        expanded=True,
+        main_align="center",
+        children=[
+            render.Text("Hello World!"),
+        ],
+    )
+
     return render.Root(
         child = render.Column(
-            cross_align="center",
+            expanded=True,
+            main_align="center",
             children=[
-                render.Text("Podcast is Now!"),
+                wide_row
             ],
         )
     )
