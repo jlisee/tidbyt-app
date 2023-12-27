@@ -1,0 +1,10 @@
+#! /bin/bash
+
+# Wrapper that fetches and runs pixlet
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+# Make sure the tool exists
+make -C $SCRIPT_DIR build/pixlet > /dev/null
+
+exec "$SCRIPT_DIR/build/pixlet" "$@"
