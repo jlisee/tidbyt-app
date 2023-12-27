@@ -1,9 +1,15 @@
+PIXLET := build/pixlet
 SOURCES := $(wildcard *.star)
 TARGETS := $(patsubst %.star,build/%.webp,$(SOURCES))
+
+OS := $(shell uname -s)
+
+# My tidbyt
 DEVICE := accordingly-enriching-droll-mongrel-bc7
 IMAGE ?= hello_world
-PIXLET := build/pixlet
-OS := $(shell uname -s)
+
+# We can only a-z, A-Z, 0-9
+INSTALLATION_ID=$(subst _,,${IMAGE})
 
 # Fetch pixlet based on OS
 ifeq ($(OS),Darwin)
@@ -29,8 +35,12 @@ build/%.webp: %.star | $(PIXLET)
 	$(PIXLET) render $< -o $@
 
 # Push it to our device
-publish: build/${IMAGE}.webp
+push: build/${IMAGE}.webp
 	$(PIXLET) push $(DEVICE) $<
+
+# Push it to our device
+deploy: build/${IMAGE}.webp
+	$(PIXLET) push --installation-id $(INSTALLATION_ID) $(DEVICE) $<
 
 # View it locally
 serve:

@@ -11,17 +11,23 @@ apps and push new images to the device itself.
 
 Learn about the API and publishing: https://tidbyt.dev/
 
-Push to the device:
-
-    make publish
 
 View in browser:
 
     make serve
 
+Push to the device once:
+
+    make push
+
+Deploy to the device so it stays in the rotation (note: you cannot
+schedule this image):
+
+    make push
+
 Pick a different program (works for `serve` and `publish`):
 
-    make publish IMAGE=annimation
+    make push IMAGE=annimation
 
 ## Examples
 
