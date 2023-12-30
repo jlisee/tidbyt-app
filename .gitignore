@@ -1,2 +1,8 @@
+# Generated files
 build/
+
+# Mac files
 .DS_store
+
+# Files with secrets
+slack/config.sh

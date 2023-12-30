@@ -32,7 +32,12 @@ $(PIXLET):
 
 # Render each starlark file as webp image/animation
 build/%.webp: %.star | $(PIXLET)
-	$(PIXLET) render $< -o $@
+	if [ -f ./$*/config.sh ]; then \
+		CONFIG=$$(./$*/config.sh); \
+	else \
+		CONFIG=""; \
+	fi; \
+	$(PIXLET) render $< $$CONFIG -o $@
 
 # Push it to our device
 push: build/${IMAGE}.webp
