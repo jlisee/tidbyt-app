@@ -1,7 +1,7 @@
-# Pixlet App Experiments
+# Tidbyt App Experiments
 
 This contains programs in written in Starlark that generate 64x32
-images which are displayed on Tidbyt v1 smart display.
+images which are displayed on a Tidbyt v1 smart display.
 
 The smart display just shows images and animations.  Everything local
 is driven through the `pixlet` program.  The Tidbyt cloud runs the
